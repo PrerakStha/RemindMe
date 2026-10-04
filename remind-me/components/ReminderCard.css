@@ -65,6 +65,45 @@
   white-space: nowrap;
 }
 
+.reminder-card-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.reminder-card-edit,
+.reminder-card-delete {
+  padding: 3px 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.reminder-card-edit {
+  color: #6857e8;
+}
+
+.reminder-card-delete {
+  color: #b42318;
+}
+
+.reminder-card-edit:hover,
+.reminder-card-delete:hover {
+  text-decoration: underline;
+}
+
+.reminder-card-edit:focus-visible,
+.reminder-card-delete:focus-visible {
+  border-radius: 3px;
+  outline: 2px solid #b6adff;
+  outline-offset: 2px;
+}
+
 .reminder-card-status-dot {
   width: 8px;
   height: 8px;

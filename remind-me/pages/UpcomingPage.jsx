@@ -11,8 +11,15 @@ const getTodayValue = () => {
 const UpcomingPage = () => {
   const reminders = useReminderStore((state) => state.reminders);
   const toggleReminder = useReminderStore((state) => state.toggleReminder);
+  const deleteReminder = useReminderStore((state) => state.deleteReminder);
   const [todayValue] = useState(getTodayValue);
   const upcomingReminders = reminders.filter((reminder) => reminder.date > todayValue);
+
+  const handleDelete = (id) => {
+    if (window.confirm("Delete this reminder? This action cannot be undone.")) {
+      deleteReminder(id);
+    }
+  };
 
   return (
     <main className="mx-auto max-w-5xl">
@@ -29,6 +36,7 @@ const UpcomingPage = () => {
               key={reminder.id}
               {...reminder}
               onToggleComplete={() => toggleReminder(reminder.id)}
+              onDelete={() => handleDelete(reminder.id)}
             />
           ))}
         </div>

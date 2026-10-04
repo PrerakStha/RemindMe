@@ -9,13 +9,18 @@ const getToday = () => {
   return `${year}-${month}-${day}`;
 };
 
-const Form = ({ onSubmit, onCancel }) => {
+const Form = ({
+  defaultValues,
+  onSubmit,
+  onCancel,
+  submitLabel = "Add reminder",
+}) => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({
-    defaultValues: {
+    defaultValues: defaultValues ?? {
       title: "",
       date: getToday(),
       time: "",
@@ -117,8 +122,8 @@ const Form = ({ onSubmit, onCancel }) => {
 
       <div className="add-reminder-actions">
         <button className="add-reminder-submit" type="submit" disabled={isSubmitting}>
-          <span aria-hidden="true">＋</span>
-          Add reminder
+          {submitLabel === "Add reminder" && <span aria-hidden="true">＋</span>}
+          {submitLabel}
         </button>
         <button className="add-reminder-cancel" type="button" onClick={onCancel}>
           Cancel

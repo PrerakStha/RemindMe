@@ -5,6 +5,13 @@ import useReminderStore from "../store/reminderStore";
 const HomePage = () => {
   const reminders = useReminderStore((state) => state.reminders);
   const toggleReminder = useReminderStore((state) => state.toggleReminder);
+  const deleteReminder = useReminderStore((state) => state.deleteReminder);
+
+  const handleDelete = (id) => {
+    if (window.confirm("Delete this reminder? This action cannot be undone.")) {
+      deleteReminder(id);
+    }
+  };
 
   return (
     <main className="mx-auto max-w-5xl">
@@ -33,6 +40,7 @@ const HomePage = () => {
               key={reminder.id}
               {...reminder}
               onToggleComplete={() => toggleReminder(reminder.id)}
+              onDelete={() => handleDelete(reminder.id)}
             />
           ))}
         </div>

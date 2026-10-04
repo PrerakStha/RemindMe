@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./ReminderCard.css";
 
 const formatDate = (date) => {
@@ -12,6 +13,7 @@ const formatDate = (date) => {
 };
 
 const ReminderCard = ({
+  id,
   title = "Untitled reminder",
   date,
   time,
@@ -19,6 +21,7 @@ const ReminderCard = ({
   category = "Personal",
   completed = false,
   onToggleComplete,
+  onDelete,
 }) => {
   return (
     <article className={`reminder-card${completed ? " is-completed" : ""}`}>
@@ -32,23 +35,31 @@ const ReminderCard = ({
       <div className="reminder-card-content">
         <div className="reminder-card-topline">
           <span className="reminder-card-category">{category}</span>
-          {onToggleComplete ? (
-            <button
-              className="reminder-card-complete"
-              type="button"
-              onClick={onToggleComplete}
-              aria-label={completed ? "Mark reminder incomplete" : "Mark reminder complete"}
-              aria-pressed={completed}
-            >
-              {completed && (
-                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="m3.5 8 3 3 6-6" />
-                </svg>
-              )}
+          <div className="reminder-card-actions">
+            {onToggleComplete ? (
+              <button
+                className="reminder-card-complete"
+                type="button"
+                onClick={onToggleComplete}
+                aria-label={completed ? "Mark reminder incomplete" : "Mark reminder complete"}
+                aria-pressed={completed}
+              >
+                {completed && (
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="m3.5 8 3 3 6-6" />
+                  </svg>
+                )}
+              </button>
+            ) : (
+              <span className="reminder-card-status-dot" aria-hidden="true" />
+            )}
+            <Link className="reminder-card-edit" to={`/edit/${id}`}>
+              Edit
+            </Link>
+            <button className="reminder-card-delete" type="button" onClick={onDelete}>
+              Delete
             </button>
-          ) : (
-            <span className="reminder-card-status-dot" aria-hidden="true" />
-          )}
+          </div>
         </div>
 
         <h2 className="reminder-card-title">{title}</h2>

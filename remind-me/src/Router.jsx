@@ -13,7 +13,7 @@ const Router = () => {
           <Route index element={<HomePage />} />
           <Route path="upcoming" element={<UpcomingPage />} />
           <Route path="add" element={<AddPage />} />
-          <Route path="edit" element={<EditPage />} />
+          <Route path="edit/:id" element={<EditPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
