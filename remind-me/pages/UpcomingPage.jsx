@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ReminderCard from "../components/ReminderCard";
+import useReminderStore from "../store/reminderStore";
 
 const getTodayValue = () => {
   const today = new Date();
@@ -8,7 +9,8 @@ const getTodayValue = () => {
 };
 
 const UpcomingPage = () => {
-  const { reminders, toggleReminder } = useOutletContext();
+  const reminders = useReminderStore((state) => state.reminders);
+  const toggleReminder = useReminderStore((state) => state.toggleReminder);
   const [todayValue] = useState(getTodayValue);
   const upcomingReminders = reminders.filter((reminder) => reminder.date > todayValue);
 

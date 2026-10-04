@@ -1,8 +1,10 @@
-import { Link, useOutletContext } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ReminderCard from "../components/ReminderCard";
+import useReminderStore from "../store/reminderStore";
 
 const HomePage = () => {
-  const { reminders, toggleReminder } = useOutletContext();
+  const reminders = useReminderStore((state) => state.reminders);
+  const toggleReminder = useReminderStore((state) => state.toggleReminder);
 
   return (
     <main className="mx-auto max-w-5xl">
