@@ -1,0 +1,174 @@
+.reminder-card {
+  display: flex;
+  width: min(100%, 380px);
+  box-sizing: border-box;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 18px;
+  border: 1px solid #eceaf5;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(37 31 82 / 6%);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.reminder-card:hover {
+  transform: translateY(-2px);
+  border-color: #ddd8ff;
+  box-shadow: 0 12px 28px rgb(37 31 82 / 10%);
+}
+
+.reminder-card-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 14px;
+  background: #f0edff;
+  color: #6857e8;
+}
+
+.reminder-card-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.reminder-card-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.reminder-card-topline {
+  display: flex;
+  min-height: 22px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.reminder-card-category {
+  overflow: hidden;
+  color: #807f96;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.reminder-card-status-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #f0a54a;
+  box-shadow: 0 0 0 3px #fff4e5;
+}
+
+.reminder-card-complete {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  border: 1.5px solid #d5d2e3;
+  border-radius: 50%;
+  background: #fff;
+  color: #fff;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.reminder-card-complete:hover,
+.reminder-card-complete[aria-pressed="true"] {
+  border-color: #6857e8;
+  background: #6857e8;
+}
+
+.reminder-card-complete:focus-visible {
+  outline: 3px solid #b6adff;
+  outline-offset: 2px;
+}
+
+.reminder-card-complete svg {
+  width: 13px;
+  height: 13px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.reminder-card-title {
+  overflow-wrap: anywhere;
+  margin: 7px 0 0;
+  color: #25243b;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.4;
+}
+
+.reminder-card-note {
+  margin: 5px 0 0;
+  color: #77768c;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.reminder-card-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 14px;
+}
+
+.reminder-card-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #69687d;
+  font-size: 12px;
+  font-weight: 550;
+}
+
+.reminder-card-detail svg {
+  width: 15px;
+  height: 15px;
+  stroke: #8c89a4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.4;
+}
+
+.reminder-card.is-completed .reminder-card-title {
+  color: #858498;
+  text-decoration: line-through;
+  text-decoration-color: #aaa7bb;
+}
+
+@media (max-width: 420px) {
+  .reminder-card {
+    gap: 12px;
+    padding: 15px;
+    border-radius: 16px;
+  }
+
+  .reminder-card-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+  }
+}
